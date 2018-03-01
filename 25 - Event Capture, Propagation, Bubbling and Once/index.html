@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Understanding JavaScript's Capture</title>
+</head>
+
+<body>
+
+    <body class="bod">
+
+        <div class="one">
+            <div class="two">
+                <div class="three">
+                </div>
+            </div>
+        </div>
+
+        <style>
+            html {
+                box-sizing: border-box;
+            }
+
+            *,
+            *:before,
+            *:after {
+                box-sizing: inherit;
+            }
+
+            div {
+                width: 100%;
+                padding: 100px;
+            }
+
+            .one {
+                background: thistle;
+            }
+
+            .two {
+                background: mistyrose;
+            }
+
+            .three {
+                background: coral;
+            }
+        </style>
+
+        <button></button>
+        <script>
+            const divs = document.querySelectorAll('div');
+
+            function logText(e) {
+                // e.stopPropagation();
+                console.log(this.classList.value);
+            }
+
+            divs.forEach(div => div.addEventListener('click', logText, { capture: false, once: true }));
+
+        </script>
+    </body>
+
+</html>
